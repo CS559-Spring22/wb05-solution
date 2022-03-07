@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- CS559 Workbook Pages - page content &copy; 2021, Michael Gleicher -->
+<!-- This page is part of a Workbook developed for the 
+    CS559 Computer Graphics Class at the University of Wisconsin
+    https://graphics.cs.wisc.edu/Courses/559-sp2021/ -->
+    <head>
+	<meta name="generator" content="Hugo 0.68.3" />
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/workbook.css">
+        <script src="./js/resizeIFrames.js"></script>
+    </head>
+    <body>
+        <div class="container container--outer"><div class="maincolumn">
+
+
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Workbook 5: Curves in 2D</h1>
+	</header>
+	<div class="content main__content clearfix">
+        
+
+        <p>This workbook is due on Monday, February 28, 2022.</p><p>In this workbook, we&rsquo;ll get beyond straight lines to consider curves in 2D.</p>
+<p>The &ldquo;programming project&rdquo; that goes with Curves is to make a train. Originally, we had the train as part of this workbook - but it was too much for one week (the train is a pretty big thing unto itself). So, this workbook covers the basics of curves, and the train will be an optional workbook for advanced points due on March 14th.</p>
+<p>Several pages have required exercises on them. But, as always, feel free to tinker with all of the provided example demos.</p>
+<h2>Learning Goals</h2>
+<ol>
+    <li>To understand the concepts of parametric curves and parameterizations</li>
+    <li>To understand curve tangents, derivatives, and continuity conditions</li>
+    <li>To understand piecewise polynomial representations of curves</li>
+    <li>To understand cubic segments, and the need for different forms</li>
+    <li>To understand arc-length parameterizations and how we approximate it</li>
+    <li>To understand the ideas and properties of Bezier curves including their geometric and algebraic formulations</li>
+    <li>To understand how we draw curves, including adaptation</li>
+    <li>To be able to use curves in various APIs, including curve format conversion</li>
+</ol>
+<h2 id="required-reading">Required Reading</h2>
+<p>Note: you will want to mix the required reading, the optional reading, and the workbook together.</p>
+<p><strong>Textbook:</strong> Curves are covered in <a href="https://canvas.wisc.edu/files/23924298/download?download_frd=1">FCG4_Ch15.pdf (0.5mb)</a>. Since this chapter is a little mathematical, mix the reading with the lectures and the workbook to connect the intuitions. <a href="https://canvas.wisc.edu/files/23924312/download?download_frd=1">Hart20-jan19.pdf (2.4mb)</a> is optional, as it covers much of the same material in a different way. We won&rsquo;t cover all the material in class. The required sections are:</p>
+<ol>
+<li>FCG 15.1 - basic ideas of curves, including parameterizations and piecewise representations</li>
+<li>FCG 15.2 - curve properties (especially continuity)</li>
+<li>FCG 15.3 - polynomial pieces - you need to have the basic intuitions, however, you will not need to do the derivations yourself.</li>
+<li>FCG 15.4 - putting pieces together - this makes things sound more complicated than they are</li>
+<li>FCG 15.5 - cubics - again, you won&rsquo;t have to derive the different cubic types, but make sure you know what hermites and cardinals are</li>
+<li>FCG 15.6.1 - Bézier curves - very important, since they are what gets used in Canvas and many other things. The workbook and lectures will give you the intuitions, the book will show you the equations.</li>
+</ol>
+<p>In Hart, you should read this to clarify and reinforce the required material above, but there isn&rsquo;t anything new, so this can be considered optional.</p>
+<ol>
+<li>Hart 20.0 - basics of curves, a good review of the terms discussed in FCG 15.1-15.3</li>
+<li>Hart 20.1 - the wiggle theorem - make sure you have the intuition that an nth degree polynomial has n-1 wiggles.</li>
+<li>Hart 20.2 - Lagrangian curves - this is also 15.3.6 in FCG - understand the basic idea to know why we don&rsquo;t use these things.</li>
+<li>Hart 20.3 - Hermite curves - these are in 15.3.4 and 15.5.2 of FCG. You won&rsquo;t need to derive them, but understanding what they are will be useful for Beziers and Cardinals, which we will use a lot.</li>
+<li>Hart 20.4 - Bézier curves - these are important, so seeing them more than once may help.</li>
+</ol>
+<p>The rest of the Chapter focuses on B-Splines and rational curves, which we won&rsquo;t cover in class.</p>
+<p><strong>Videos:</strong> A few years ago, we made some videos to explain the algorithms for Bezier curves (they are optional but helpful):</p>
+<ul>
+<li><a href="https://mediaspace.wisc.edu/media/1_ht8bd4ii" target="_blank">DeCastlejau 2</a> - Showing the algorithm for 3 points (a second degree curve)</li>
+<li><a href="https://mediaspace.wisc.edu/media/1_yfe2pejr" target="_blank">DeCastlejau 3</a> - Showing the algorithm for 4 points (a third degree curve)</li>
+<li><a href="https://mediaspace.wisc.edu/media/1_b45evtd7" target="_blank">DeCastlejau 4</a> - Shows the connection between the geometric constructions and the polynomial forms</li>
+</ul>
+<h2 id="rubric-for-grading">Rubric for Grading</h2>
+<p>Note: there aren&rsquo;t many advanced points this week. Next week, there will be many advanced point opportunities.</p>
+<div class="page-rubric-container">
+<details class="page__rubric">
+<summary>Workbook Rubric (90 points total)</summary>
+<br/>
+<div class="page-rubric-grid">
+        <div class="page-rubric-grid-header rubric-box-regular">Points (87):</div><div class="page-rubric-grid-box rubric-box-regular"></div>
+            <div class="page-rubric-grid-points rubric-box-regular">40 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">correct turn in</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-01-02</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">implement the correct tangent vector for the parabola</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-03-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">cubic coefficients question</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-04-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">evaluate Hermite</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-07-03</div>
+            <div class="page-rubric-grid-points rubric-box-regular">5 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">divide the Bezier curve</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-09-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">3 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">recreated the picture using canvas</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-09-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">3 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">didn&#39;t use quadratic commands</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-09-02</div>
+            <div class="page-rubric-grid-points rubric-box-regular">6 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">draw a picture that demonstrate the use of bezierCurveTo in Canvas</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-09-02</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">explained where there is G(1) continuity</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-10-03</div>
+            <div class="page-rubric-grid-points rubric-box-regular">6 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">make the green dot go around the triangle with arc-length parameterization</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-11-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">8 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">draw the spiral</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-11-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">checkbox control of lines</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-11-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">slider control of points</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-12-01</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">make a cardinal spline through the points</div><div class="page-rubric-grid-box rubric-box-regular">Box 05-12-02</div>
+            <div class="page-rubric-grid-points rubric-box-regular">2 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-regular">split the Bezier</div>
+    <div class="page-rubric-grid-header rubric-box-bonus">Advanced points (3):</div><div class="page-rubric-grid-box rubric-box-bonus">Box 05-11-01</div>
+            <div class="page-rubric-grid-points rubric-box-bonus">3 pt</div>
+            <div class="page-rubric-grid-desc rubric-box-bonus">approximate spiral with Beziers, have a switch for lines/Beziers</div></div>
+</details>
+</div>
+<p>As you go through the workbook pages, feel free to tinker with the programs we have given you as a way to understand how they work!</p>
+<h2 id="get-started">Get Started</h2>
+<p>Don&rsquo;t forget to commit and push as you work!</p>
+
+        
+        
+        
+        
+        <h3 class="get__started">Get started on 
+            <a href="./docs/1/">Page &nbsp;1&nbsp; (Curves)</a>!</h3>
+        
+	</div>
+</main>
+
+                </div>
+                <div class="sidebar">
+<h2 class="Side_Title">Workbook 5: Curves in 2D</h2>
+<p class="Side__Note">Pages:</p>
+<ul class="Side__List">
+    <li class="Side__Item Side__Selected">Index (CS559 Workbook 5: Curves in 2D) </li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/1/">1: Curves </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/2/">2: Piecewise Parameteric Curves and Continuity </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/3/">3: Cubics </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/4/">4: Interpolation and Hermite Cubics </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/5/">5: Cardinal Cubics and Interpolation </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/6/">6: Bézier Curves </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/7/">7: DeCastlejau Constructions </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/8/">8: Bezier Cubics </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/9/">9: Beziers in APIs </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/10/">10: Arc-Length Parameterizations </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/11/">11: Drawing Curves </a></li>
+        <li class="Side__Item Side__Unselected"> <a href="./docs/12/">12: Curve review </a></li>
+</ul>
+</div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+The curve:
+from (1,1) to (4,3) 
+with derivative at 0 = (3,0) 
+and derivative at 1 = (3,3)
+
+has value (? , ?) at u=.5
+
+replace the ? with numbers
