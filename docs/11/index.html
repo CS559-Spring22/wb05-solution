@@ -61,7 +61,9 @@
         
         
         
-		<div class="content post__content clearfix"><p>On this page, we&rsquo;ll consider how we actually program curves in practice.</p>
+		<div class="content post__content clearfix"><div class="dimbox">
+                    <h3>CS559 Spring 2022 Sample Solution</h3>
+                </div><p>On this page, we&rsquo;ll consider how we actually program curves in practice.</p>
 <h2 id="discretizing-curves">Discretizing Curves</h2>
 <p>If we draw a parametric curve <code>$\mathbf{x} = \mathbf{f}(u)$</code>, the obvious thing to do is to pick a set of <code>$u$</code> values, find the corresponding positions <code>$\mathbf{x}$</code>, and plot those points. The simplest way to do this is to choose a number of points ahead of time, and make equally spaced <code>$u$</code> values.</p>
 <p>This approach has problems. If you pick too many <code>$u$</code> values, it is wasteful: they will all end up in the same place (because ultimately, we have finite sized pixels). If you pick too few <code>$u$</code> values, you will get gaps between the points. Worse, if the curve varies in how fast it changes (it isn&rsquo;t arc length parameterized), there may be some places where you have too many and other places where you have too few.</p>

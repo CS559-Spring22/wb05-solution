@@ -61,7 +61,9 @@
         
         
         
-		<div class="content post__content clearfix"><p>The way that we&rsquo;ll make complicated shapes is by piecing together simple pieces. We&rsquo;ve already been doing this: we have been making pictures out of primitives. If we want something complicated, we make it from a bunch of lines, arcs, polygons, etc.</p>
+		<div class="content post__content clearfix"><div class="dimbox">
+                    <h3>CS559 Spring 2022 Sample Solution</h3>
+                </div><p>The way that we&rsquo;ll make complicated shapes is by piecing together simple pieces. We&rsquo;ve already been doing this: we have been making pictures out of primitives. If we want something complicated, we make it from a bunch of lines, arcs, polygons, etc.</p>
 <p>A specific example we have already been using are line segments. Line segments are a simple primitive. If we want to make a more complicated shape, we piece together a bunch of them. We might call the combined thing a &ldquo;bigger primitive&rdquo; (e.g., a polyline or whatever name you like for a list of line segments).</p>
 <p>When we build things out of parts, we need to think about two main issues: (1) what parts do we make things out of, and (2) how do we make sure that those parts fit together nicely.</p>
 <p>To extend the line segment example: we know the pieces very well (a line segment is well defined mathematically, and we know how to specify it by giving its endpoints or other sets of numbers). We know how to fit pieces together: we make the end of one line as the beginning of the next, and they connect without a gap. With line segments, at this connection point there will be a sharp &ldquo;corner&rdquo; (unless the line segments are going in the same direction). The shape won&rsquo;t be &ldquo;smooth&rdquo;. For talking about line segments, you can probably imagine what I mean by &ldquo;corner&rdquo; and &ldquo;smooth&rdquo; - but for graphics, we&rsquo;ll need to define the concept of smoothness more formally, which is what this page is about.</p>

@@ -61,7 +61,9 @@
         
         
         
-		<div class="content post__content clearfix"><p>Arc length parameterization is discussed in Section 15.1.1 of <a href="https://canvas.wisc.edu/files/23924298/download?download_frd=1">FCG4_Ch15.pdf (0.5mb)</a> - but this is a more intuition based description.</p>
+		<div class="content post__content clearfix"><div class="dimbox">
+                    <h3>CS559 Spring 2022 Sample Solution</h3>
+                </div><p>Arc length parameterization is discussed in Section 15.1.1 of <a href="https://canvas.wisc.edu/files/23924298/download?download_frd=1">FCG4_Ch15.pdf (0.5mb)</a> - but this is a more intuition based description.</p>
 <h2 id="box-1-arc-length-and-non-arc-length">Box 1: Arc-length and non-arc length</h2>
 <p>We usually like to define our parameterizations such that each piece goes from 0 to 1. But this means that if we move at a constant speed in the parameter, the pen would move at a variable speed. An arc-length parameterization is a parameterization where the pen moves at a constant speed (assuming the parameter changes at a constant speed).</p>
 <p>For an example in <a href="../../for_students/05-10-01.js" class="for_students">05-10-01.js</a> (<a href="../../for_students/05-10-01.html" class="for_students">05-10-01.html</a>), consider a set of line segments that go around a rectangle. Let the 4 corners be <strong>p0, p1, p2</strong> and <strong>p3</strong>, and let the rectangle be (20,20) to (120,40). So it is 20 pixels high and 100 pixels wide. The most obvious parameterization has each line segment with a unit parameterization. The top segment would be 0-1, the right segment would be 1-2, the bottom segment would be 2-3, and the left segment will be 3-4. Each segment takes the same amount of &ldquo;parameter&rdquo;, so if we change u at a constant rate, the pen will be moving 5 times faster in the horizontal segments than in the vertical ones. This is the red dot in the animation. Click the checkbox to start the animation, or scrub with the slider.</p>

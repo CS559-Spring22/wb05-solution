@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300px" height="200px">
+<svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px">
     <path stroke="black" fill ="none" stroke-width="5" d="M20,20 C 128,20 128,128 236,74" />
+    <path stroke="blue" fill ="none" stroke-width="5" d="M20,20 C 56,20 80,32 100,46" />
+    <path stroke="red" fill ="none" stroke-width="5" d="M100,46 C 120,60 136,76 156,84" />
+    <path stroke="green" fill ="none" stroke-width="5" d="M156,84 C 176,92 200,92 236,74" />
 </svg>

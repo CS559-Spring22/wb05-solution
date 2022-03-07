@@ -61,7 +61,9 @@
         
         
         
-		<div class="content post__content clearfix"><p>On the previous pages, we focused on interpolating curves. At the end, we had the problem that when we interpolate, we lack control over what happens in-between the interpolation sites. One answer to this would be &ldquo;don&rsquo;t interpolate&rdquo;. This might seem counter-intuitive because interpolation seems so convenient. But, in practice, the most often used curve types in computer graphics are not interpolating.</p>
+		<div class="content post__content clearfix"><div class="dimbox">
+                    <h3>CS559 Spring 2022 Sample Solution</h3>
+                </div><p>On the previous pages, we focused on interpolating curves. At the end, we had the problem that when we interpolate, we lack control over what happens in-between the interpolation sites. One answer to this would be &ldquo;don&rsquo;t interpolate&rdquo;. This might seem counter-intuitive because interpolation seems so convenient. But, in practice, the most often used curve types in computer graphics are not interpolating.</p>
 <p>We call curves that are not interpolating <strong>approximating</strong> curves because they approximate their control points, rather than interpolate them.</p>
 <p>There are two common types of approximating curves in computer graphics: Bézier curves and B-Splines. Both are splines - they make complex shapes out of a series of smaller segments, with each segment being a polynomial. Both are very general, they work for any degree of polynomial. Both have elegant mathematics behind them, and good methods. For 2D, Bézier curves are far more common so we will focus on them.</p>
 <p>And a note: the correct (French) spelling of Bézier has an accent over the first e. Leaving off the accent is acceptable, because the curves are so common, the word &ldquo;Bezier&rdquo; has basically become an English word.</p>

@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="../libs/CS559/style559.css" />
-  </head>
 
-  <body>
-    <canvas id="canvas1" height="400" width="400"></canvas>
+<head>
+  <link rel="stylesheet" href="../libs/CS559/style559.css" />
+</head>
 
-    <!-- students should add slider and checkbox -->
+<body>
+  <canvas id="canvas1" height="400" width="400"></canvas>
 
-    <script src="05-11-01.js" type="module" defer></script>
-  </body>
+  <!-- students should add slider and checkbox -->
+  <!-- Begin Example Solution -->
+  <br />
+  <label for="npoints">Number of points (20-200)</label>
+  <input type="range" id="npoints" min="20" max="200">
+  <br />
+  <label for="connect">Connect the Dots</label>
+  <input type="checkbox" id="connect" checked>
+  <br />
+  <label for="bezier">Bezier segments</label>
+  <input type="checkbox" id="bezier">
+  <br />
+  <label for="cardinal">Estimate derivatives (Cardinal Spline)</label>
+  <input type="checkbox" id="cardinal">
+  <br />
+  <!-- End Example Solution -->
+
+  <script src="05-11-01.js" type="module" defer></script>
+</body>
+
 </html>
-

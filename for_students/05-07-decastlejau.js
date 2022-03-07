@@ -36,14 +36,14 @@ function evaluate(pts, param) {
  * @param {number} nsamps
  * @param {boolean} drawConstruction=true
  */
-export function decastle(context, points, param, nsamps, drawConstruction=true) {
+export function decastle(context, points, param, nsamps, drawConstruction = true) {
   const circRadius = 8;
   context.save();
   let pts = points;
 
   /** draw dots for the  control points*/
   context.fillStyle = "blue";
-  points.forEach(function(pt) {
+  points.forEach(function (pt) {
     context.beginPath();
     context.arc(pt[0], pt[1], 5, 0, twoPi);
     context.fill();
@@ -84,30 +84,34 @@ export function decastle(context, points, param, nsamps, drawConstruction=true) 
   }
 
   /** do the construction - draw the lines along the way*/
-    context.lineWidth = 1;
-    context.strokeStyle = "black";
-    // treat the outermost level differently
-    let levels=0;
-    while (pts.length > 1) {
-        let newpts = [];
-        context.beginPath();
-        context.moveTo(pts[0][0], pts[0][1]);
-        for (let i = 0; i < pts.length - 1; i++) {
-            let lp = lerp(param, pts[i], pts[i + 1]);
-            newpts.push(lp);
-            context.lineTo(pts[i + 1][0], pts[i + 1][1]);
-        }
-        if  (drawConstruction || !levels)
-            context.stroke();
-        pts = newpts;
-        levels++;
+  context.lineWidth = 1;
+  context.strokeStyle = "black";
+  // treat the outermost level differently
+  let levels = 0;
+  let allpts = [...pts];
+  while (pts.length > 1) {
+    let newpts = [];
+    context.beginPath();
+    context.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 0; i < pts.length - 1; i++) {
+      let lp = lerp(param, pts[i], pts[i + 1]);
+      newpts.push(lp);
+      context.lineTo(pts[i + 1][0], pts[i + 1][1]);
     }
+    if (drawConstruction || !levels)
+      context.stroke();
+    pts = newpts;
+    allpts.push(...newpts);
+    levels++;
+  }
 
-    // at the end there is one point...
+  // at the end there is one point...
   context.fillStyle = "red";
   context.beginPath();
   context.arc(pts[0][0], pts[0][1], circRadius, 0, twoPi);
   context.fill();
   context.restore();
+
+  return allpts;
 }
 

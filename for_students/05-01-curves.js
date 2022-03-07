@@ -1,4 +1,19 @@
+/**
+ * CS559 Spring 2021 Example Solution
+ * Written by CS559 course staff
+ */
+
+/**
+ * 05-01-curves.js - a simple JavaScript file that gets loaded with
+ * page 1 of Workbook 5 (CS559).
+ *
+ * written by Michael Gleicher, January 2019
+ * modified January 2020
+ *
+ */
+
 // @ts-check
+/* jshint -W069, esversion:6 */
 
 /**
  * Sample parametric functions
@@ -56,7 +71,9 @@ function disconnect(u) {
  * be the actual functions
  */
 function parabola(u) {
-  return [100 * u, 400 * (u - 0.5) * (u - 0.5), 40, 40];
+  // Begin Example Solution
+  return [100 * u, 400 * (u - 0.5) * (u - 0.5), 100, 800 * (u - 0.5)];
+  // End Example Solution
 }
 
 /**

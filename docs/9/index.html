@@ -61,7 +61,9 @@
         
         
         
-		<div class="content post__content clearfix"><p>Both Canvas and SVG support Bézier curves. Both APIs provide commands for both cubic and quadratic Béziers. Technically, they support linear Béziers, but we usually call these lines.</p>
+		<div class="content post__content clearfix"><div class="dimbox">
+                    <h3>CS559 Spring 2022 Sample Solution</h3>
+                </div><p>Both Canvas and SVG support Bézier curves. Both APIs provide commands for both cubic and quadratic Béziers. Technically, they support linear Béziers, but we usually call these lines.</p>
 <h2 id="bézier-curves-in-canvas">Bézier Curves in Canvas</h2>
 <p>The HTML Canvas API provides both quadratic and cubic Bézier curves. It allows you to use these curves as pieces of longer paths.</p>
 <p>One thing that is slightly surprising about Bézier segments in Canvas is that they take one fewer control point as an argument than the curve needs. The first control point is always the most recent pen position. So, if you want to give the four points of a Bézier segment, you need to do a <code>moveTo</code> first to get that first point:</p>
